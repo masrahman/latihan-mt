@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Latihan MT</string>
+    <string-array name="status">
+        <item>Belum Menikah</item>
+        <item>Menikah</item>
+        <item>Janda</item>
+        <item>Duda</item>
+    </string-array>
 </resources>

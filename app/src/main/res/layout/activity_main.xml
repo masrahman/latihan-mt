@@ -19,19 +19,111 @@
 
     <EditText
         android:id="@+id/etNama"
-        app:layout_constraintTop_toBottomOf="@id/tvNama"
-        android:layout_marginHorizontal="16dp"
-        android:hint="Nama Lengkap"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        android:hint="Nama Lengkap"
+        app:layout_constraintTop_toBottomOf="@id/tvNama"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/lblStatus"
+        android:text="Status Pernikahan"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@id/etNama"
+        app:layout_constraintTop_toBottomOf="@id/etNama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/spnStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:entries="@array/status"
+        app:layout_constraintTop_toBottomOf="@id/lblStatus"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/lblJenisKelamin"
+        android:text="Jenis Kelamin"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@id/spnStatus"
+        app:layout_constraintTop_toBottomOf="@id/spnStatus"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btnSubmit"
-        app:layout_constraintTop_toBottomOf="@id/etNama"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Submit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Submit"
+        app:layout_constraintTop_toBottomOf="@+id/cbBakso"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <RadioButton
+        android:id="@+id/rbPria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pria"
+        app:layout_constraintStart_toStartOf="@+id/lblJenisKelamin"
+        app:layout_constraintTop_toBottomOf="@+id/lblJenisKelamin" />
+
+    <RadioButton
+        android:id="@+id/rbWanita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Wanita"
+        app:layout_constraintStart_toEndOf="@+id/rbPria"
+        app:layout_constraintTop_toTopOf="@+id/rbPria" />
+
+    <TextView
+        android:id="@+id/lblMakanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Makanan Favorit"
+        app:layout_constraintStart_toStartOf="@+id/rbPria"
+        app:layout_constraintTop_toBottomOf="@+id/rbPria" />
+
+    <CheckBox
+        android:id="@+id/cbBakso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bakso"
+        app:layout_constraintStart_toStartOf="@+id/lblMakanan"
+        app:layout_constraintTop_toBottomOf="@+id/lblMakanan" />
+
+    <CheckBox
+        android:id="@+id/cbAyam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Ayam Goreng"
+        app:layout_constraintStart_toEndOf="@+id/cbBakso"
+        app:layout_constraintTop_toTopOf="@+id/cbBakso" />
+
+    <CheckBox
+        android:id="@+id/cbRendang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Rendang"
+        app:layout_constraintStart_toEndOf="@+id/cbAyam"
+        app:layout_constraintTop_toTopOf="@+id/cbAyam" />
+
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
