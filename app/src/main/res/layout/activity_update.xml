@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Input Biodata"
+        android:text="Update Biodata"
         style="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -53,16 +53,6 @@
         app:layout_constraintTop_toBottomOf="@id/spnStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="20dp"
-        android:text="Submit"
-        app:layout_constraintTop_toBottomOf="@+id/cbBakso"
-        tools:layout_editor_absoluteX="16dp" />
 
     <RadioButton
         android:id="@+id/rbPria"
@@ -115,5 +105,15 @@
         android:text="Rendang"
         app:layout_constraintStart_toEndOf="@+id/cbAyam"
         app:layout_constraintTop_toTopOf="@+id/cbAyam" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Update"
+        app:layout_constraintTop_toBottomOf="@+id/cbBakso"
+        tools:layout_editor_absoluteX="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package id.maasrahman.latihanmt
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,7 @@ import id.maasrahman.latihanmt.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
+    var favorite = arrayListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +35,16 @@ class MainActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                var result = etNama.text.toString()
-                result += "\nStatus ${spnStatus.selectedItem}"
-                result += "\nJenis Kelamin ${if(rbPria.isChecked) "Pria" else "Wanita"}"
-                result += "\nMakanan Favorit ${favorite.joinToString(", ")}"
+                var biodata = Biodata(
+                    nama = etNama.text.toString(),
+                    status = spnStatus.selectedItem.toString(),
+                    jenisKelamin = if(rbPria.isChecked) "Pria" else "Wanita",
+                    makananFav = favorite,
+                )
 
-                txtResult.text = result
+                val intent = Intent(baseContext, ResultActivity::class.java)
+                intent.putExtra("biodata", biodata)
+                startActivity(intent)
             }
         }
     }
@@ -52,9 +58,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
-    var favorite = arrayListOf<String>()
 
     val checkListener = CompoundButton.OnCheckedChangeListener { button, isChecked ->
         if(isChecked){
