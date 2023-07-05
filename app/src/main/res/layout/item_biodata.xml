@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/lblNama"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Nama Lengkap"
+        style="@style/TextAppearance.AppCompat.Caption"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/txtNama"
+        app:layout_constraintTop_toBottomOf="@id/lblNama"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Nama Lengkap"
+        style="@style/TextAppearance.AppCompat.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/lblStatus"
+        app:layout_constraintTop_toBottomOf="@id/txtNama"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Status"
+        style="@style/TextAppearance.AppCompat.Caption"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/txtStatus"
+        app:layout_constraintTop_toBottomOf="@id/lblStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Status"
+        style="@style/TextAppearance.AppCompat.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/lblJenisKelamin"
+        app:layout_constraintTop_toBottomOf="@id/txtStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Jenis Kelamin"
+        style="@style/TextAppearance.AppCompat.Caption"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/txtJenisKelamin"
+        app:layout_constraintTop_toBottomOf="@id/lblJenisKelamin"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Jenis Kelamin"
+        style="@style/TextAppearance.AppCompat.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/lblMakanan"
+        app:layout_constraintTop_toBottomOf="@id/txtJenisKelamin"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Makanan Favorite"
+        style="@style/TextAppearance.AppCompat.Caption"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/txtMakanan"
+        app:layout_constraintTop_toBottomOf="@id/lblMakanan"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Makanan Favorite"
+        style="@style/TextAppearance.AppCompat.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

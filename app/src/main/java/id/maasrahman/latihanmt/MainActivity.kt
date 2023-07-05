@@ -7,12 +7,16 @@ import android.view.View
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.recyclerview.widget.LinearLayoutManager
 import id.maasrahman.latihanmt.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     var favorite = arrayListOf<String>()
+
+    lateinit var biodataAdapter: BiodataAdapter
+    private var listData = mutableListOf<Biodata>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +26,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         with(binding){
+            biodataAdapter = BiodataAdapter()
+            recyclerBiodata.layoutManager = LinearLayoutManager(baseContext)
+            recyclerBiodata.adapter = biodataAdapter
+
             rbPria.setOnCheckedChangeListener(radioListener)
             rbWanita.setOnCheckedChangeListener(radioListener)
 
@@ -39,16 +47,33 @@ class MainActivity : AppCompatActivity() {
                     nama = etNama.text.toString(),
                     status = spnStatus.selectedItem.toString(),
                     jenisKelamin = if(rbPria.isChecked) "Pria" else "Wanita",
-                    makananFav = favorite,
+                    makananFav = favorite.toList()
                 )
 
-                val intent = Intent(baseContext, ResultActivity::class.java)
-                intent.putExtra("biodata", biodata)
-                startActivity(intent)
+//                val intent = Intent(baseContext, ResultActivity::class.java)
+//                intent.putExtra("biodata", biodata)
+//                startActivity(intent)
+
+                listData.add(biodata)
+                biodataAdapter.updateData(listData)
+//                clearView()
             }
         }
     }
-    
+
+    private fun clearView(){
+        with(binding){
+            etNama.text?.clear()
+            spnStatus.setSelection(0)
+            rbPria.isChecked = true
+            rbWanita.isChecked = false
+            cbAyam.isChecked = false
+            cbRendang.isChecked = false
+            cbBakso.isChecked = false
+            favorite.clear()
+        }
+    }
+
     val radioListener = CompoundButton.OnCheckedChangeListener{ button, isChekced ->
         if(isChekced){
             if(button.id == R.id.rbPria){
