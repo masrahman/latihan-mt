@@ -9,6 +9,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.maasrahman.latihanmt.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,12 +21,16 @@ class MainActivity : AppCompatActivity() {
     lateinit var biodataAdapter: BiodataAdapter
     private var listData = mutableListOf<Biodata>()
 
+    private var appDb: AppDatabase? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        appDb = AppDatabase.getDatabase(this)
 
         with(binding){
             biodataAdapter = BiodataAdapter()
@@ -50,12 +57,20 @@ class MainActivity : AppCompatActivity() {
                     makananFav = favorite.toList()
                 )
 
+                runBlocking {
+                    withContext(Dispatchers.IO){
+                        appDb?.bioDao()?.insertBiodata(biodata)
+                    }
+                }
+                finish()
+
 //                val intent = Intent(baseContext, ResultActivity::class.java)
 //                intent.putExtra("biodata", biodata)
 //                startActivity(intent)
 
-                listData.add(biodata)
-                biodataAdapter.updateData(listData)
+//                listData.add(biodata)
+//                biodataAdapter.updateData(listData)
+
 //                clearView()
             }
         }
