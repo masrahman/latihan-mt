@@ -60,7 +60,7 @@ class ListActivity : AppCompatActivity() {
     private fun initView(){
         with(binding){
             adapter = BiodataAdapter{ bio ->
-                val intent = Intent(this@ListActivity, ResultActivity::class.java)
+                val intent = Intent(baseContext, ResultActivity::class.java)
                 intent.putExtra("biodata", bio)
                 startActivity(intent)
             }

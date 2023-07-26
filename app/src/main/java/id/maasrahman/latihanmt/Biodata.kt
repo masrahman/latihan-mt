@@ -10,6 +10,7 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "biodata")
 data class Biodata (
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
     var id: Int? = null,
     @ColumnInfo(name = "name")
     var nama: String? = null,

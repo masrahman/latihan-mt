@@ -7,18 +7,18 @@
     android:padding="16dp"
     tools:context=".ResultActivity">
 
-    <TextView
+    <!--<TextView
         android:id="@+id/tvBiodata"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         style="@style/TextAppearance.AppCompat.Large"
         android:text="Biodata"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" />-->
 
     <TextView
         android:id="@+id/lblNama"
-        app:layout_constraintTop_toBottomOf="@id/tvBiodata"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:text="Nama Lengkap"
         style="@style/TextAppearance.AppCompat.Caption"
@@ -92,13 +92,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
+   <!-- <Button
         android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Update Data"
         app:layout_constraintTop_toBottomOf="@id/txtMakanan"
-        tools:layout_editor_absoluteX="16dp" />
+        tools:layout_editor_absoluteX="16dp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
