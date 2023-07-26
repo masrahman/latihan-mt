@@ -35,8 +35,7 @@ class BiodataAdapter(private val listener: (Biodata) -> Unit): RecyclerView.Adap
         fun bindData(biodata: Biodata){
             with(itemBind){
                 txtNama.text = biodata.nama
-                txtJenisKelamin.text = biodata.jenisKelamin
-                txtStatus.text = biodata.status
+                txtJenisKelamin.text = "${biodata.jenisKelamin} / ${biodata.status}"
                 txtMakanan.text = biodata.makananFav?.joinToString(", ")
                 cardItem.setOnClickListener {
                     listener(biodata)

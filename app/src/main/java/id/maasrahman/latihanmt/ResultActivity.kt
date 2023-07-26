@@ -16,6 +16,8 @@ class ResultActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        title = "View Data"
+
         val intentData = intent.extras
         if(intentData != null){
             val biodata : Biodata = intentData.getParcelable("biodata") ?: Biodata()

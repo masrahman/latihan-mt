@@ -18,9 +18,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     var favorite = arrayListOf<String>()
 
-    lateinit var biodataAdapter: BiodataAdapter
-    private var listData = mutableListOf<Biodata>()
-
     private var appDb: AppDatabase? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,15 +27,11 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        title = "Input Biodata"
+        
         appDb = AppDatabase.getDatabase(this)
 
         with(binding){
-            biodataAdapter = BiodataAdapter{
-
-            }
-            recyclerBiodata.layoutManager = LinearLayoutManager(baseContext)
-            recyclerBiodata.adapter = biodataAdapter
-
             rbPria.setOnCheckedChangeListener(radioListener)
             rbWanita.setOnCheckedChangeListener(radioListener)
 
@@ -65,15 +58,6 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 finish()
-
-//                val intent = Intent(baseContext, ResultActivity::class.java)
-//                intent.putExtra("biodata", biodata)
-//                startActivity(intent)
-
-//                listData.add(biodata)
-//                biodataAdapter.updateData(listData)
-
-//                clearView()
             }
         }
     }
@@ -108,15 +92,4 @@ class MainActivity : AppCompatActivity() {
             favorite.remove(button.text.toString())
         }
     }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 }

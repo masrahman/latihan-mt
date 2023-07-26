@@ -32,7 +32,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/txtStatus"
+            android:id="@+id/lblMakanan"
             android:layout_marginTop="5dp"
             android:text="Makanan Favorit"
             style="@style/TextAppearance.AppCompat.Caption"
@@ -45,7 +45,7 @@
             android:id="@+id/txtMakanan"
             android:text="txtMakanan"
             style="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintTop_toBottomOf="@id/txtStatus"
+            app:layout_constraintTop_toBottomOf="@id/lblMakanan"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

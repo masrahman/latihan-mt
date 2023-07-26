@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tvNama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Input Biodata"
-        style="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/etNama"
         android:layout_width="match_parent"
@@ -24,8 +13,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="20dp"
         android:hint="Nama Lengkap"
-        app:layout_constraintTop_toBottomOf="@id/tvNama"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lblStatus"
@@ -115,25 +103,5 @@
         android:text="Rendang"
         app:layout_constraintStart_toEndOf="@+id/cbAyam"
         app:layout_constraintTop_toTopOf="@+id/cbAyam" />
-
-    <TextView
-        android:id="@+id/lblResult"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@id/btnSubmit"
-        app:layout_constraintTop_toBottomOf="@id/btnSubmit"
-        android:text="Result"
-        style="@style/TextAppearance.AppCompat.Large"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerBiodata"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/lblResult"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
