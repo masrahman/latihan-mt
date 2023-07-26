@@ -29,7 +29,8 @@ class BiodataAdapter(private val listener: (Biodata) -> Unit): RecyclerView.Adap
         holder.bindData(listData[position])
     }
 
-    inner class BiodataHolder(private val itemBind: ItemBiodataBinding, private val listener: (Biodata) -> Unit)
+    inner class BiodataHolder(private val itemBind: ItemBiodataBinding,
+                              private val listener: (Biodata) -> Unit)
         : RecyclerView.ViewHolder(itemBind.root){
 
         fun bindData(biodata: Biodata){

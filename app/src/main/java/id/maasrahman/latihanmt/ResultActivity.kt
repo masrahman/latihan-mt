@@ -16,8 +16,8 @@ import kotlinx.coroutines.withContext
 class ResultActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityResultBinding
-    var modelBiodata: Biodata? = null
 
+    var modelBiodata: Biodata? = null
     private var appDb: AppDatabase? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,27 +31,25 @@ class ResultActivity : AppCompatActivity() {
 
         val intentData = intent.extras
         if(intentData != null){
-            val biodata : Biodata = intentData.getParcelable("biodata") ?: Biodata()
-            modelBiodata = biodata
-            bindData(biodata)
+            modelBiodata = intentData.getParcelable("biodata") ?: Biodata()
+            bindData()
         }
     }
 
     val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
         if(result.resultCode == RESULT_OK){
             val bundle = result.data
-            val biodata : Biodata = bundle?.getParcelableExtra("biodata") ?: Biodata()
-            modelBiodata = biodata
-            bindData(biodata)
+            modelBiodata = bundle?.getParcelableExtra("biodata") ?: Biodata()
+            bindData()
         }
     }
 
-    fun bindData(biodata: Biodata){
+    fun bindData(){
         with(binding){
-            txtNama.text = biodata.nama
-            txtStatus.text = biodata.status
-            txtJenisKelamin.text = biodata.jenisKelamin
-            txtMakanan.text = biodata.makananFav?.joinToString(", ")
+            txtNama.text = modelBiodata?.nama
+            txtStatus.text = modelBiodata?.status
+            txtJenisKelamin.text = modelBiodata?.jenisKelamin
+            txtMakanan.text = modelBiodata?.makananFav?.joinToString(", ")
         }
     }
 
@@ -77,7 +75,7 @@ class ResultActivity : AppCompatActivity() {
                                 appDb?.bioDao()?.deleteBiodata(modelBiodata ?: Biodata())
                             }
                         }
-                        dialog.dismiss()
+//                        dialog.dismiss()
                         finish()
                     }
                     .setNegativeButton("Batal") { dialog, _ ->

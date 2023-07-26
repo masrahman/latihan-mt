@@ -14,7 +14,7 @@ class UpdateActivity : AppCompatActivity() {
     var favorite = arrayListOf<String>()
 
     private var appDb: AppDatabase? = null
-    private var biodata: Biodata? = null
+    private var modelBiodata: Biodata? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class UpdateActivity : AppCompatActivity() {
 
         val bundle = intent.extras
         if(bundle != null){
-            biodata = bundle.getParcelable("biodata") ?: Biodata()
+            modelBiodata = bundle.getParcelable("biodata") ?: Biodata()
             bindData()
         }
 
@@ -46,19 +46,20 @@ class UpdateActivity : AppCompatActivity() {
                     etNama.error = "Wajib diisi"
                     return@setOnClickListener
                 }
-                biodata?.nama = etNama.text.toString()
-                biodata?.status = spnStatus.selectedItem.toString()
-                biodata?.jenisKelamin = if(rbPria.isChecked) "Pria" else "Wanita"
-                biodata?.makananFav = favorite
+
+                modelBiodata?.nama = etNama.text.toString()
+                modelBiodata?.status = spnStatus.selectedItem.toString()
+                modelBiodata?.jenisKelamin = if(rbPria.isChecked) "Pria" else "Wanita"
+                modelBiodata?.makananFav = favorite
 
                 runBlocking {
                     withContext(Dispatchers.IO){
-                        appDb?.bioDao()?.updateBiodata(biodata ?: Biodata())
+                        appDb?.bioDao()?.updateBiodata(modelBiodata ?: Biodata())
                     }
                 }
 
                 val intent = Intent()
-                intent.putExtra("biodata", biodata)
+                intent.putExtra("biodata", modelBiodata)
                 setResult(RESULT_OK, intent)
                 finish()
             }
@@ -67,18 +68,18 @@ class UpdateActivity : AppCompatActivity() {
 
     fun bindData() {
         with(binding) {
-            etNama.setText(biodata?.nama)
+            etNama.setText(modelBiodata?.nama)
 
             val statusArray = resources.getStringArray(R.array.status)
-            spnStatus.setSelection(statusArray.indexOf(biodata?.status))
+            spnStatus.setSelection(statusArray.indexOf(modelBiodata?.status))
 
-            rbPria.isChecked = biodata?.jenisKelamin == "Pria"
-            rbWanita.isChecked = biodata?.jenisKelamin == "Wanita"
+            rbPria.isChecked = modelBiodata?.jenisKelamin == "Pria"
+            rbWanita.isChecked = modelBiodata?.jenisKelamin == "Wanita"
 
-            cbAyam.isChecked = biodata?.makananFav?.contains(cbAyam.text.toString()) ?: false
-            cbBakso.isChecked = biodata?.makananFav?.contains(cbBakso.text.toString()) ?: false
-            cbRendang.isChecked = biodata?.makananFav?.contains(cbRendang.text.toString()) ?: false
-            favorite.addAll(biodata?.makananFav ?: emptyList())
+            cbAyam.isChecked = modelBiodata?.makananFav?.contains(cbAyam.text.toString()) ?: false
+            cbBakso.isChecked = modelBiodata?.makananFav?.contains(cbBakso.text.toString()) ?: false
+            cbRendang.isChecked = modelBiodata?.makananFav?.contains(cbRendang.text.toString()) ?: false
+            favorite.addAll(modelBiodata?.makananFav ?: emptyList())
         }
     }
 

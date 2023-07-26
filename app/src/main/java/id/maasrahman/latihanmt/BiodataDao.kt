@@ -14,6 +14,9 @@ interface BiodataDao {
     @Query("select * from biodata")
     fun getBiodata(): List<Biodata>
 
+    @Query("select * from biodata where name like '%' || :str || '%'")
+    fun getBiodataParam(str: String): List<Biodata>
+
     @Update
     fun updateBiodata(biodata: Biodata)
 
