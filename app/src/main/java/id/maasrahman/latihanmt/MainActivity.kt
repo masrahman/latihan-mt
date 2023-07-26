@@ -33,7 +33,9 @@ class MainActivity : AppCompatActivity() {
         appDb = AppDatabase.getDatabase(this)
 
         with(binding){
-            biodataAdapter = BiodataAdapter()
+            biodataAdapter = BiodataAdapter{
+
+            }
             recyclerBiodata.layoutManager = LinearLayoutManager(baseContext)
             recyclerBiodata.adapter = biodataAdapter
 

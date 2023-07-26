@@ -46,7 +46,11 @@ class ListActivity : AppCompatActivity() {
 
     private fun initView(){
         with(binding){
-            adapter = BiodataAdapter()
+            adapter = BiodataAdapter{ bio ->
+                val intent = Intent(this@ListActivity, ResultActivity::class.java)
+                intent.putExtra("biodata", bio)
+                startActivity(intent)
+            }
             recyclerList.layoutManager = LinearLayoutManager(baseContext)
             recyclerList.adapter = adapter
 
